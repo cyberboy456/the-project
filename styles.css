@@ -1,0 +1,229 @@
+:root {
+  --primary-light: #4f46e5; /* Light theme primary color */
+  --primary-dark: #3b82f6; /* Dark theme primary color */
+  --danger: #ef4444; /* Danger color */
+  --success: #10b981; /* Success color */
+  --dark-bg: #1e293b; /* Dark background color */
+  --dark-text: #f8fafc; /* Dark text color */
+  --dark-card: #334155; /* Dark card color */
+  --light-bg: #f9fafb; /* Light background color */
+  --light-card: rgba(255, 255, 255, 0.95); /* Light card color */
+  --light-text: #0f172a; /* Light text color */
+  --search-bg: rgba(255, 255, 255, 0.9); /* Light search bar background */
+  --history-btn-bg: #3b82f6; /* Light history button background */
+  --coming-soon-bg: rgba(79, 70, 229, 0.8); /* Light coming soon button background */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.light-theme {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+  background-image: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(255, 255, 255, 0.8));
+}
+
+.dark-theme {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  background-image: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+}
+
+.card {
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.light-theme .card {
+  background-color: var(--light-card);
+}
+
+.dark-theme .card {
+  background-color: rgba(30, 41, 59, 0.8);
+}
+
+.result-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: top center;
+  will-change: transform, opacity;
+}
+
+.result-card.safe-url {
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+.result-card.danger-url {
+  box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+}
+
+.safe-url {
+  border-left: 5px solid var(--success);
+}
+
+.danger-url {
+  border-left: 5px solid var(--danger);
+}
+
+.warning-url {
+  border-left: 5px solid #f59e0b;
+}
+
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.theme-toggle {
+  background-color: var(--primary-dark); /* Dark theme primary color */
+  color: white; /* White text color for contrast */
+  border: none; /* Remove default border */
+  border-radius: 9999px; /* Fully rounded button */
+  padding: 0.5rem 1rem; /* Padding for better spacing */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.theme-toggle:hover {
+  background-color: #2563eb; /* Darker shade of primary color on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.theme-toggle:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* Add a soft glow effect on focus */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary-light), var(--success));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.coming-soon {
+  opacity: 0.6;
+  cursor: not-allowed;
+  position: relative;
+  background-color: var(--coming-soon-bg); /* Light coming soon button background */
+  color: white; /* White text color */
+  padding: 0.75rem 1.5rem; /* Padding for better spacing */
+  border-radius: 0.5rem; /* Slightly rounded corners */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+}
+
+.coming-soon:hover {
+  background-color: rgba(79, 70, 229, 1); /* Darker shade on hover */
+}
+
+.coming-soon::after {
+  content: 'Coming Soon';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-weight: bold;
+  border-radius: inherit;
+}
+
+/* Enhanced Button Styles */
+button {
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* Input Field Styles */
+input[type="text"] {
+  border: 1px solid #d1d5db; /* Light gray border */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 0.75rem; /* Padding for better spacing */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effects */
+  background-color: var(--search-bg); /* Light search bar background */
+  color: var(--light-text); /* Dark text color for contrast */
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary-light); /* Change border color to primary on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5); /* Add a soft blue glow effect */
+  background-color: rgba(255, 255, 255, 1); /* Solid white background on focus */
+}
+
+/* Check History Button Styles */
+#historyBtn {
+  background-color: var(--history-btn-bg); /* Light history button background */
+  color: white; /* White text color for contrast */
+  border: none; /* Remove default border */
+  border-radius: 0.5rem; /* Slightly rounded corners */
+  padding: 0.75rem 1.5rem; /* Padding for better spacing */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+#historyBtn:hover {
+  background-color: #2563eb; /* Darker shade of blue on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+#historyBtn:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5); /* Add a soft glow effect on focus */
+}
